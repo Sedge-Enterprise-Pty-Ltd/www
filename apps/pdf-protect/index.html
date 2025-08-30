@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sedge PDF Password Protector</title>
+  <link rel="icon" href="favicon.ico">
+  <style>
+    :root { --bg:#0b0c10; --panel:#ffffff; --ink:#101418; --muted:#5c636a; --brand:#0ea5e9; }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#e9f2f8, #f7fafc);}
+    header{display:flex;align-items:center;gap:12px;padding:24px 20px;max-width:1000px;margin:0 auto;}
+    header img{height:54px;width:auto;border-radius:8px}
+    h1{margin:0;font:600 26px/1.2 system-ui,Segoe UI,Roboto,Helvetica,Arial}
+    main{max-width:1000px;margin:0 auto;padding:0 20px 40px}
+    .card{background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.06);padding:24px;margin:16px 0}
+    h2{font:600 20px/1.3 system-ui,Segoe UI,Roboto}
+    p,li{color:#333;line-height:1.6}
+    code{background:#f3f5f7;padding:.15rem .35rem;border-radius:6px}
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:12px;
+         background:var(--brand);color:#fff;text-decoration:none;font-weight:600}
+    .cta:hover{filter:brightness(1.05)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width: 860px){ .row{grid-template-columns:1fr} }
+    footer{max-width:1000px;margin:20px auto 60px;padding:0 20px;color:#555}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .muted{color:#6b7280}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="Sedge Enterprise Logo" />
+    <h1>Sedge PDF Password Protector</h1>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Download</h2>
+      <p>Windows 10/11 (64-bit). No installation — single executable.</p>
+      <p>
+        <a id="dl" class="cta" href="#" download>⬇ Download EXE</a>
+      </p>
+      <p class="mono">SHA256: <span id="sha">paste-your-sha256-here</span></p>
+      <p class="muted">If SmartScreen warns, click <em>More info → Run anyway</em>. For enterprise use, code-signing is recommended.</p>
+    </div>
+
+    <div class="row">
+      <div class="card">
+        <h2>What it does</h2>
+        <ul>
+          <li>Protects a PDF with a <strong>single password</strong> (AES-256)</li>
+          <li>Works in Adobe Reader, Edge/Chrome, macOS Preview, etc.</li>
+          <li>Simple GUI: <em>Browse PDF → Enter password → Save As → Protect</em></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>How to use</h2>
+        <ol>
+          <li>Run <span class="mono">SedgePDFProtector.exe</span></li>
+          <li>Click <em>Browse…</em> and select your PDF</li>
+          <li>Enter your password (toggle <em>Show</em> if needed)</li>
+          <li>Click <em>Save…</em> to choose output (e.g. <span class="mono">.protected.pdf</span>)</li>
+          <li>Click <strong>Protect PDF</strong></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Troubleshooting</h2>
+      <ul>
+        <li><strong>“Failed to protect PDF”</strong> — Make sure the file is a valid <span class="mono">.pdf</span>.</li>
+        <li><strong>Viewer won’t open</strong> — Ensure you typed the exact password (case-sensitive).</li>
+        <li><strong>SmartScreen</strong> — Use a code-signed build for distribution at scale.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Sedge Enterprise</p>
+  </footer>
+
+  <script>
+    // 1) Set your repo path once:
+    const owner = "YOUR_GITHUB_OWNER";
+    const repo  = "YOUR_REPO_NAME";
+    const file  = "SedgePDFProtector.exe";
+
+    // 2) Link points to the latest release asset:
+    const url = `https://github.com/${owner}/${repo}/releases/latest/download/${file}`;
+    document.getElementById('dl').href = url;
+
+    // 3) Cosmetic
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+`
